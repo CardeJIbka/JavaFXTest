@@ -8,7 +8,13 @@ public class HelloController {
     private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("WWочень крутая играWW");
+    protected void onHelloButtonClick() {                           // Кто прочитал, тот гей
+        welcomeText.setText("WWочень крутая играWW");                           // Кто прочитал, тот гей
+        // Кто прочитал, тот гей
+        // Кто прочитал, тот гей
+        // Кто прочитал, тот гей
+        // Кто прочитал, тот гей
+        // Кто прочитал, тот гей
+        // Кто прочитал, тот гей
     }
 }
