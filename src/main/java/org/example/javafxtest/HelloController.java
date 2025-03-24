@@ -9,6 +9,7 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("очень крутая игра");
+        welcomeText.setText("WWочень крутая играWW");
     }
 }
+//tyt bil voldmag
