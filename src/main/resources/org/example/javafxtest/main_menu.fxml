@@ -5,55 +5,61 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.GameController">
    <children>
-      <Button fx:id="play" layoutX="88.0" layoutY="440.0" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;">
-         <font>
-            <Font size="52.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="78.0" fitWidth="506.0">
-               <Image url="@images/buttons/game_button.png"/>
-            </ImageView>
-         </graphic>
-      </Button>
-
-
-      <Button fx:id="options" layoutX="88.0" layoutY="623.0" mnemonicParsing="false" onAction="#onOptionsBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;">
-         <font>
-            <Font size="52.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="78.0" fitWidth="506.0">
-               <Image url="@images/buttons/options_button.png"/>
-            </ImageView>
-         </graphic>
-      </Button>
-
-
-
-      <Button fx:id="exit" layoutX="88.0" layoutY="806.0" mnemonicParsing="false" onAction="#onExitBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;">
-         <font>
-            <Font size="52.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="78.0" fitWidth="506.0">
-               <Image url="@images/buttons/exit_button.png"/>
-            </ImageView>
-         </graphic>
-      </Button>
-
-
-
-      <ImageView fitHeight="550.0" fitWidth="850.0" layoutX="1100.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+      <!-- хуйнюшка справа сверху -->
+      <ImageView fx:id="logoImageView" fitHeight="450.0" fitWidth="850.0"  pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0">  <!-- выравнивание к верхнему и левому краю -->
          <image>
             <Image url="@images/buttons/logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
+
+
+      <!-- Кнопка "Играть" -->
+      <Button fx:id="play" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;" AnchorPane.bottomAnchor="430.0" AnchorPane.leftAnchor="50.0">  <!-- выравнивание к нижнему краю и отступ слева -->
+         <font>
+            <Font size="52.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="506.0" preserveRatio="true">
+               <image>
+                  <Image url="@images/buttons/game_button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <!-- Кнопка "Настройки" -->
+      <Button fx:id="options" mnemonicParsing="false" onAction="#onOptionsBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="50.0">  <!-- выравнивание к нижнему краю и отступ слева -->
+         <font>
+            <Font size="52.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="506.0" preserveRatio="true">
+               <image>
+                  <Image url="@images/buttons/options_button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <!-- Кнопка "Выход" -->
+      <Button fx:id="exit" mnemonicParsing="false" onAction="#onExitBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="50.0">  <!-- выравнивание к нижнему краю и отступ слева -->
+         <font>
+            <Font size="52.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="506.0" preserveRatio="true">
+               <image>
+                  <Image url="@images/buttons/exit_button.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <!-- что то, что я не понял что -->
+      <!-- <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="20.0" />  Anchor к верхнему и правому краю -->
 
    </children>
 </AnchorPane>
