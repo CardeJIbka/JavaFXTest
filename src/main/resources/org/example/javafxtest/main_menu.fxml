@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -9,26 +10,49 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.GameController">
    <children>
-      <Button fx:id="play" layoutX="88.0" layoutY="440.0" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="78.0" prefWidth="506.0" text="Играть"> // размер для "играть" и позиционка
+      <Button fx:id="play" layoutX="88.0" layoutY="440.0" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;">
          <font>
             <Font size="52.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="506.0">
+               <Image url="@images/buttons/game_button.png"/>
+            </ImageView>
+         </graphic>
       </Button>
-      <Button fx:id="options" layoutX="88.0" layoutY="623.0" mnemonicParsing="false" onAction="#onOptionsBtnClick" prefHeight="78.0" prefWidth="506.0" text="Настройки"> // размер для "настроек" и позиционка
+
+
+      <Button fx:id="options" layoutX="88.0" layoutY="623.0" mnemonicParsing="false" onAction="#onOptionsBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;">
          <font>
             <Font size="52.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="506.0">
+               <Image url="@images/buttons/options_button.png"/>
+            </ImageView>
+         </graphic>
       </Button>
-      <Button fx:id="exit" layoutX="88.0" layoutY="806.0" mnemonicParsing="false" onAction="#onExitBtnClick" prefHeight="78.0" prefWidth="506.0" text="Выйти"> // размер для "выйти" и позиционка
+
+
+
+      <Button fx:id="exit" layoutX="88.0" layoutY="806.0" mnemonicParsing="false" onAction="#onExitBtnClick" prefHeight="78.0" prefWidth="506.0" style="-fx-padding: 0;">
          <font>
             <Font size="52.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="506.0">
+               <Image url="@images/buttons/exit_button.png"/>
+            </ImageView>
+         </graphic>
       </Button>
-      <Text layoutX="1400.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tales of Elteria" wrappingWidth="449.587890625">
-         <font>
-            <Font size="100.0" />
-         </font>
-      </Text>
+
+
+
+      <ImageView fitHeight="550.0" fitWidth="850.0" layoutX="1100.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/buttons/logo.png" />
+         </image>
+      </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
 
    </children>
