@@ -8,16 +8,16 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.GameController">
    <children>
       <!-- хуйнюшка справа сверху -->
-      <ImageView fx:id="logoImageView" fitHeight="450.0" fitWidth="850.0" pickOnBounds="true" preserveRatio="true"
-                 AnchorPane.topAnchor="20.0"
-                 AnchorPane.rightAnchor="20.0">  <!-- выравнивание к верхнему и левому краю -->
+      <ImageView fx:id="logoImageView" fitHeight="400.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true"
+                 AnchorPane.topAnchor="80.0"
+                 AnchorPane.rightAnchor="80.0">  <!-- выравнивание к верхнему и левому краю -->
          <Image url="@images/buttons/logo.png"/>
       </ImageView>
 
       <!-- Кнопка "Играть" -->
       <Button fx:id="play" mnemonicParsing="false" onAction="#onPlayBtnClick" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="430.0" AnchorPane.leftAnchor="50.0" > <!-- выравнивание к нижнему и левому краю -->
          <graphic>
-            <ImageView fitHeight="340.0" fitWidth="900.0" preserveRatio="true">
+            <ImageView fitHeight="110.0" fitWidth="500.0" preserveRatio="true">
                <Image url="@images/buttons/game_button.png"/>
             </ImageView>
          </graphic>
@@ -26,7 +26,7 @@
       <!-- Кнопка "Настройки" -->
       <Button fx:id="options" mnemonicParsing="false" onAction="#onOptionsBtnClick" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="50.0" > <!-- выравнивание к нижнему и левому краю -->
          <graphic>
-            <ImageView fitHeight="340.0" fitWidth="900.0" preserveRatio="true">
+            <ImageView fitHeight="110.0" fitWidth="500.0" preserveRatio="true">
                <Image url="@images/buttons/options_button.png"/>
             </ImageView>
          </graphic>
@@ -35,7 +35,7 @@
       <!-- Кнопка "Выход" -->
       <Button fx:id="exit" mnemonicParsing="false" onAction="#onExitBtnClick" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="50.0" > <!-- выравнивание к нижнему и левому краю -->
          <graphic>
-            <ImageView fitHeight="340.0" fitWidth="900.0" preserveRatio="true">
+            <ImageView fitHeight="110.0" fitWidth="500.0" preserveRatio="true">
                <Image url="@images/buttons/exit_button.png"/>
             </ImageView>
          </graphic>
