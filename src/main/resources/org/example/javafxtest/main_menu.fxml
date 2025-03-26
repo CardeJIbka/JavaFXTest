@@ -7,7 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.GameController">
    <children>
-      <!-- хуйнюшка справа сверху -->
+      <!-- Фоновое изображение -->
+      <ImageView fitWidth="2560.0" fitHeight="1440.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"> <!-- фоновое изображение, надо будет добавить автомасштабирование -->
+         <Image url="@images/background/MainMenuBackground.png" />
+      </ImageView>
+
+      <!-- Название игры -->
       <ImageView fx:id="logoImageView" fitHeight="400.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true"
                  AnchorPane.topAnchor="80.0"
                  AnchorPane.rightAnchor="80.0">  <!-- выравнивание к верхнему и левому краю -->
