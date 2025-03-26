@@ -9,12 +9,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.GameController">
    <children>
+      <Button fx:id="play" layoutX="88.0" layoutY="440.0" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="78.0" prefWidth="506.0" text="Играть"> // размер для "играть" и позиционка
+         <font>
+            <Font size="52.0" />
+         </font>
+      </Button>
       <Button fx:id="options" layoutX="88.0" layoutY="623.0" mnemonicParsing="false" onAction="#onOptionsBtnClick" prefHeight="78.0" prefWidth="506.0" text="Настройки"> // размер для "настроек" и позиционка
          <font>
             <Font size="52.0" />
          </font>
       </Button>
-      <Button fx:id="play" layoutX="88.0" layoutY="440.0" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="78.0" prefWidth="506.0" text="Играть"> // размер для "играть" и позиционка
+      <Button fx:id="exit" layoutX="88.0" layoutY="806.0" mnemonicParsing="false" onAction="#onExitBtnClick" prefHeight="78.0" prefWidth="506.0" text="Выйти"> // размер для "выйти" и позиционка
          <font>
             <Font size="52.0" />
          </font>
@@ -25,5 +30,6 @@
          </font>
       </Text>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
+
    </children>
 </AnchorPane>
