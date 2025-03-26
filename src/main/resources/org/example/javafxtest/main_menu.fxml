@@ -9,19 +9,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.GameController">
    <children>
-      <Button fx:id="options" layoutX="88.0" layoutY="373.0" mnemonicParsing="false" onAction="#onOptionsBtnClick" prefHeight="78.0" prefWidth="206.0" text="Настройки">
+      <Button fx:id="options" layoutX="88.0" layoutY="623.0" mnemonicParsing="false" onAction="#onOptionsBtnClick" prefHeight="78.0" prefWidth="506.0" text="Настройки"> // размер для "настроек" и позиционка
          <font>
-            <Font size="24.0" />
+            <Font size="52.0" />
          </font>
       </Button>
-      <Button fx:id="play" layoutX="88.0" layoutY="270.0" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="78.0" prefWidth="206.0" text="Играть">
+      <Button fx:id="play" layoutX="88.0" layoutY="440.0" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="78.0" prefWidth="506.0" text="Играть"> // размер для "играть" и позиционка
          <font>
-            <Font size="24.0" />
+            <Font size="52.0" />
          </font>
       </Button>
-      <Text layoutX="367.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tales of Elteria" wrappingWidth="449.587890625">
+      <Text layoutX="1400.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tales of Elteria" wrappingWidth="449.587890625">
          <font>
-            <Font size="64.0" />
+            <Font size="100.0" />
          </font>
       </Text>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="117.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
