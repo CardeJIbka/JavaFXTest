@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.javafxtest.OptionsController"
+      spacing="10" alignment="CENTER">
+
+    <Label text="Настройки" style="-fx-font-size: 20;"/>
+    <Button text="Назад" fx:id="backButton" onAction="#onBackButtonClick"/>
+</VBox>
