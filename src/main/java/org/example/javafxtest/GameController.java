@@ -21,10 +21,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Главный контроллер игрового меню.
- * Управляет отображением слайд-шоу фоновых изображений и обработкой действий пользователя.
- */
+
+//Главный контроллер игрового меню. Управляет отображением слайд-шоу фоновых изображений и обработкой действий пользователя.
+
 public class GameController {
     // Элементы интерфейса из FXML
     public ImageView logoImageView;          // Логотип игры
@@ -39,10 +38,7 @@ public class GameController {
     private List<Image> backgroundImages = new ArrayList<>(); // Список загруженных фоновых изображений
     private int currentBackgroundIndex = 0;  // Индекс текущего фонового изображения
 
-    /**
-     * Инициализация контроллера, вызывается автоматически после загрузки FXML.
-     * Настраивает элементы интерфейса и запускает слайд-шоу.
-     */
+
     @FXML
     public void initialize() {
         // Настройка временного ImageView для плавных переходов
@@ -55,10 +51,7 @@ public class GameController {
         startSlideShow();        // Запуск слайд-шоу
     }
 
-    /**
-     * Загружает фоновые изображения из ресурсов приложения.
-     * Добавляет их в список backgroundImages.
-     */
+    // ЗАГРУЗКА ФОНА ДЛЯ СЛАЙДШОУ
     private void loadBackgroundImages() {
         // Пути к фоновым изображениям в ресурсах
         String[] imagePaths = {
@@ -84,10 +77,7 @@ public class GameController {
         }
     }
 
-    /**
-     * Запускает автоматическую смену фоновых изображений.
-     * Изображения меняются каждые 5 секунд с анимацией перехода.
-     */
+    // ГОЛОВА СЛАЙДШОУ
     private void startSlideShow() {
         // Для слайд-шоу нужно минимум 2 изображения
         if (backgroundImages.size() < 2) return;
@@ -100,10 +90,7 @@ public class GameController {
         slideShowTimeline.play(); // Запуск таймера
     }
 
-    /**
-     * Осуществляет смену фонового изображения с плавной анимацией перехода.
-     * Использует два ImageView для эффекта перекрестного растворения.
-     */
+    // ОСНОВНОЙ ПРИНЦИП СЛАЙДШОУ
     private void changeBackgroundWithAnimation() {
         // Вычисляем индекс следующего изображения (с зацикливанием)
         int nextIndex = (currentBackgroundIndex + 1) % backgroundImages.size();
