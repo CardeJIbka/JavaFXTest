@@ -21,16 +21,16 @@
       </ImageView>
 
       <!-- Кнопка "Играть" -->
-      <Button fx:id="play" mnemonicParsing="false" onAction="#onPlayBtnClick" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="430.0" AnchorPane.leftAnchor="50.0">
+      <Button fx:id="play" mnemonicParsing="false" onAction="#onPlayBtnClick" onMouseEntered="#onMouseEnteredPlay" onMouseExited="#onMouseExitedPlay" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="430.0" AnchorPane.leftAnchor="50.0">
          <graphic>
-            <ImageView fitHeight="110.0" fitWidth="500.0" preserveRatio="true">
+            <ImageView fitHeight="110.0" fitWidth="377.0" preserveRatio="true">
                <Image url="@images/buttons/game_button.png" />
             </ImageView>
          </graphic>
       </Button>
 
       <!-- Кнопка "Настройки" -->
-      <Button fx:id="options" mnemonicParsing="false" onAction="#onOptionsBtnClick" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="50.0">
+      <Button fx:id="options" mnemonicParsing="false" onAction="#onOptionsBtnClick" onMouseEntered="#onMouseEnteredOptions" onMouseExited="#onMouseExitedOptions" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="50.0">
          <graphic>
             <ImageView fitHeight="110.0" fitWidth="500.0" preserveRatio="true">
                <Image url="@images/buttons/options_button.png" />
@@ -39,7 +39,7 @@
       </Button>
 
       <!-- Кнопка "Выход" -->
-      <Button fx:id="exit" mnemonicParsing="false" onAction="#onExitBtnClick" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="50.0">
+      <Button fx:id="exit" mnemonicParsing="false" onAction="#onExitBtnClick" onMouseEntered="#onMouseEnteredExit" onMouseExited="#onMouseExitedExit" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="50.0">
          <graphic>
             <ImageView fitHeight="110.0" fitWidth="500.0" preserveRatio="true">
                <Image url="@images/buttons/exit_button.png" />

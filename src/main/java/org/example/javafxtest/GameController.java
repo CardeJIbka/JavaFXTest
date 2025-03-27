@@ -16,6 +16,8 @@ import javafx.stage.Window;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -27,11 +29,12 @@ import java.util.List;
 public class GameController {
     // Элементы интерфейса из FXML
     public ImageView logoImageView;          // Логотип игры
-    @FXML private ImageView backgroundImageView;     // Основное фоновое изображение
-    @FXML private ImageView nextBackgroundImageView; // Временное фоновое изображение для анимации перехода
-    @FXML private Button options;           // Кнопка перехода в настройки
-    @FXML private Button play;              // Кнопка начала игры
-    @FXML private Button exit;              // Кнопка выхода из игры
+    @FXML
+    private ImageView backgroundImageView;     // Основное фоновое изображение
+    @FXML
+    private ImageView nextBackgroundImageView; // Временное фоновое изображение для анимации перехода
+    @FXML
+    private Button options, play, exit;           // Кнопки
 
     // Переменные для управления слайд-шоу
     private Timeline slideShowTimeline;      // Таймер для автоматической смены фонов
@@ -131,6 +134,7 @@ public class GameController {
         play.setText("Играем..."); // Изменяем текст кнопки
     }
 
+
     // Кнопка Настройки
     @FXML
     void onOptionsBtnClick(ActionEvent event) {
@@ -159,7 +163,63 @@ public class GameController {
     void onExitBtnClick(ActionEvent event) {
         Platform.exit(); // Корректный выход из приложения
     }
+
+    @FXML
+    void onMouseEnteredPlay(javafx.scene.input.MouseEvent mouseEvent) {
+            Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/play_btn_selected.png"));
+            ImageView imageView = new ImageView(newImage);
+            imageView.setFitWidth(376); // Устанавливаем ширину
+            imageView.setFitHeight(110);
+            play.setGraphic(imageView);
+    }
+
+    @FXML
+    void onMouseExitedPlay(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/game_button.png"));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitHeight(110);
+        play.setGraphic(imageView);
+    }
+
+    @FXML
+    void onMouseEnteredOptions(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/options_btn_selected.png"));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitHeight(110);
+        options.setGraphic(imageView);
+    }
+
+    @FXML
+    void onMouseExitedOptions(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/options_button.png"));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitHeight(110);
+        options.setGraphic(imageView);
+    }
+
+    @FXML
+    void onMouseEnteredExit(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/exit_btn_selected.png"));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitHeight(110);
+        exit.setGraphic(imageView);
+    }
+
+    @FXML
+    void onMouseExitedExit(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/exit_button.png"));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitHeight(110);
+        exit.setGraphic(imageView);
+    }
 }
+
+
 
 // СОХРАНЕНИЕ РАЗРЕШЕНИЕ ИЗОБРАЖЕНИЯ
 class WindowState {
