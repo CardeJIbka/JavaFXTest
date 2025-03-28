@@ -137,55 +137,55 @@ public class GameController {
 
     @FXML
     void onMouseEnteredPlay(javafx.scene.input.MouseEvent mouseEvent) {
-            Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/play_btn_selected.png")));
+            Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/playButtonSelected.png")));
             ImageView imageView = new ImageView(newImage);
-            imageView.setFitWidth(376); // Устанавливаем ширину и высоту
-            imageView.setFitHeight(110);
+            imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+            imageView.setFitHeight(156);
             playButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseExitedPlay(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/game_button.png")));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/playButton.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
-        imageView.setFitHeight(110);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
         playButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseEnteredOptions(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/options_btn_selected.png")));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/optionsButtonSelected.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
-        imageView.setFitHeight(110);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
         optionsButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseExitedOptions(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/options_button.png")));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/optionsButton.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
-        imageView.setFitHeight(110);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
         optionsButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseEnteredExit(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/exit_btn_selected.png")));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/exitButtonSelected.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
-        imageView.setFitHeight(110);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
         exitButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseExitedExit(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/exit_button.png")));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/exitButton.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
-        imageView.setFitHeight(110);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
         exitButton.setGraphic(imageView);
     }
 }
