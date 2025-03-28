@@ -11,6 +11,7 @@ module org.example.javafxtest {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.desktop;
+    requires javafx.media;
 
     opens org.example.javafxtest to javafx.fxml;
     exports org.example.javafxtest;

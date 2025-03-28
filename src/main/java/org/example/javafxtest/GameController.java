@@ -11,12 +11,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
+import javax.print.attribute.standard.Media;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -31,8 +35,12 @@ public class GameController {
     @FXML
     private Button optionsButton, playButton, exitButton;
     private Timeline slideShowTimeline;      // Таймер для автоматической смены фонов
+    private Timeline backgroundTimeline;
     private List<Image> backgroundImages = new ArrayList<>(); // Список загруженных фоновых изображений
     private int currentBackgroundIndex = 0;  // Индекс текущего фонового изображения
+    private final AudioClip buttonSelected = new AudioClip(this.getClass().getResource("/sounds/button_sounds/buttonSelected.mp3").toExternalForm());
+    private final AudioClip buttonClicked = new AudioClip(this.getClass().getResource("/sounds/button_sounds/buttonClicked.mp3").toExternalForm());
+    private final AudioClip ambientMenu = new AudioClip(this.getClass().getResource("/sounds/background_ambient/ambientMenu.mp3").toExternalForm());
 
 
     @FXML
@@ -43,6 +51,10 @@ public class GameController {
 
         loadBackgroundImages();  // Загрузка фоновых изображений
         startSlideShow();        // Запуск слайд-шоу
+        buttonSelected.setVolume(0.1);
+        buttonClicked.setVolume(0.2);
+        ambientMenu.setVolume(0.1);
+        ambientMenu.play();
     }
 
     private void loadBackgroundImages() {   // Загрузка фоновых изображений
@@ -64,10 +76,23 @@ public class GameController {
         if (backgroundImages.size() < 2) return;
 
         slideShowTimeline = new Timeline(
-                new KeyFrame(Duration.seconds(5), event -> changeBackgroundWithAnimation())
+                new KeyFrame(Duration.seconds(5), event ->
+                        changeBackgroundWithAnimation())
         );
         slideShowTimeline.setCycleCount(Timeline.INDEFINITE); // Бесконечное повторение
         slideShowTimeline.play(); // Запуск таймера
+
+        backgroundTimeline = new Timeline( // счётчик чтобы музыка начиналась заного
+                new KeyFrame(Duration.seconds(1), actionEvent -> checkAmbientIsPlaying())
+        );
+        backgroundTimeline.setCycleCount(Timeline.INDEFINITE);
+        backgroundTimeline.play();
+    }
+
+    private void checkAmbientIsPlaying() {
+        if (!ambientMenu.isPlaying()) {
+            ambientMenu.play();
+        }
     }
 
     private void changeBackgroundWithAnimation() { // метод, делающий смену картинок
@@ -106,10 +131,12 @@ public class GameController {
     @FXML
     void onPlayButtonClick(ActionEvent event) { // Нажатие на кнопку играть
         playButton.setText("Играем..."); // Изменяем текст кнопки
+        buttonClicked.play();
     }
 
     @FXML
     void onOptionsButtonClick(ActionEvent event) {
+        buttonClicked.play();
         try {
             // Останавливаем слайд-шоу перед переходом
             if (slideShowTimeline != null) {
@@ -132,16 +159,18 @@ public class GameController {
 
     @FXML
     void onExitButtonClick(ActionEvent event) {
+        buttonClicked.play();
         Platform.exit();
     }
 
     @FXML
     void onMouseEnteredPlay(javafx.scene.input.MouseEvent mouseEvent) {
-            Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/playButtonSelected.png")));
-            ImageView imageView = new ImageView(newImage);
-            imageView.setFitWidth(535); // Устанавливаем ширину и высоту
-            imageView.setFitHeight(156);
-            playButton.setGraphic(imageView);
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/playButtonSelected.png")));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
+        playButton.setGraphic(imageView);
+        buttonSelected.play();
     }
 
     @FXML
@@ -160,6 +189,7 @@ public class GameController {
         imageView.setFitWidth(535); // Устанавливаем ширину и высоту
         imageView.setFitHeight(156);
         optionsButton.setGraphic(imageView);
+        buttonSelected.play();
     }
 
     @FXML
@@ -178,6 +208,7 @@ public class GameController {
         imageView.setFitWidth(535); // Устанавливаем ширину и высоту
         imageView.setFitHeight(156);
         exitButton.setGraphic(imageView);
+        buttonSelected.play();
     }
 
     @FXML
