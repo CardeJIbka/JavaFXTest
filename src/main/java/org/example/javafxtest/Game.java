@@ -14,7 +14,7 @@ public class Game extends Application { // главный класс как я �
         Scene scene = new Scene(fxmlLoader.load(), 1440, 840); //размер окна
         stage.setTitle("Tales of Elteria"); //название окна
         stage.setScene(scene); // установка сцены (fxml файл с дизайном и объектами)
-        stage.setFullScreen(true);
+        stage.setMaximized(true);
         stage.show(); // отображение сцены
     }
 

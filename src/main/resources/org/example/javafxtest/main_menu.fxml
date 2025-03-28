@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.GameController">
    <children>
       <!-- Основное фоновое изображение (нижний слой) -->
       <ImageView fx:id="backgroundImageView" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,7 +21,7 @@
       </ImageView>
 
       <!-- Кнопка "Играть" -->
-      <Button fx:id="play" mnemonicParsing="false" onAction="#onPlayBtnClick" onMouseEntered="#onMouseEnteredPlay" onMouseExited="#onMouseExitedPlay" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="430.0" AnchorPane.leftAnchor="50.0">
+      <Button fx:id="playButton" mnemonicParsing="false" onAction="#onPlayButtonClick" onMouseEntered="#onMouseEnteredPlay" onMouseExited="#onMouseExitedPlay" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="430.0" AnchorPane.leftAnchor="50.0">
          <graphic>
             <ImageView fitHeight="110.0" fitWidth="377.0" preserveRatio="true">
                <Image url="@images/buttons/game_button.png" />
@@ -30,7 +30,7 @@
       </Button>
 
       <!-- Кнопка "Настройки" -->
-      <Button fx:id="options" mnemonicParsing="false" onAction="#onOptionsBtnClick" onMouseEntered="#onMouseEnteredOptions" onMouseExited="#onMouseExitedOptions" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="50.0">
+      <Button fx:id="optionsButton" mnemonicParsing="false" onAction="#onOptionsButtonClick" onMouseEntered="#onMouseEnteredOptions" onMouseExited="#onMouseExitedOptions" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="50.0">
          <graphic>
             <ImageView fitHeight="110.0" fitWidth="500.0" preserveRatio="true">
                <Image url="@images/buttons/options_button.png" />
@@ -39,7 +39,7 @@
       </Button>
 
       <!-- Кнопка "Выход" -->
-      <Button fx:id="exit" mnemonicParsing="false" onAction="#onExitBtnClick" onMouseEntered="#onMouseEnteredExit" onMouseExited="#onMouseExitedExit" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="50.0">
+      <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onExitButtonClick" onMouseEntered="#onMouseEnteredExit" onMouseExited="#onMouseExitedExit" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="50.0">
          <graphic>
             <ImageView fitHeight="110.0" fitWidth="500.0" preserveRatio="true">
                <Image url="@images/buttons/exit_button.png" />

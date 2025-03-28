@@ -17,26 +17,19 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-
-//Главный контроллер игрового меню. Управляет отображением слайд-шоу фоновых изображений и обработкой действий пользователя.
 
 public class GameController {
-    // Элементы интерфейса из FXML
-    public ImageView logoImageView;          // Логотип игры
-    @FXML
-    private ImageView backgroundImageView;     // Основное фоновое изображение
-    @FXML
-    private ImageView nextBackgroundImageView; // Временное фоновое изображение для анимации перехода
-    @FXML
-    private Button options, play, exit;           // Кнопки
 
-    // Переменные для управления слайд-шоу
+    @FXML
+    private ImageView logoImageView, backgroundImageView, nextBackgroundImageView;
+    @FXML
+    private Button optionsButton, playButton, exitButton;
     private Timeline slideShowTimeline;      // Таймер для автоматической смены фонов
     private List<Image> backgroundImages = new ArrayList<>(); // Список загруженных фоновых изображений
     private int currentBackgroundIndex = 0;  // Индекс текущего фонового изображения
@@ -44,9 +37,7 @@ public class GameController {
 
     @FXML
     public void initialize() {
-        // Настройка временного ImageView для плавных переходов
-        nextBackgroundImageView.setVisible(false); // Сначала скрываем
-        // Привязываем размеры к основному фоновому изображению
+        nextBackgroundImageView.setVisible(false);
         nextBackgroundImageView.fitWidthProperty().bind(backgroundImageView.fitWidthProperty());
         nextBackgroundImageView.fitHeightProperty().bind(backgroundImageView.fitHeightProperty());
 
@@ -54,38 +45,24 @@ public class GameController {
         startSlideShow();        // Запуск слайд-шоу
     }
 
-    // ЗАГРУЗКА ФОНА ДЛЯ СЛАЙДШОУ
-    private void loadBackgroundImages() {
-        // Пути к фоновым изображениям в ресурсах
+    private void loadBackgroundImages() {   // Загрузка фоновых изображений
         String[] imagePaths = {
                 "/images/background/MainMenuBackground1.png",
                 "/images/background/MainMenuBackground2.png",
                 "/images/background/MainMenuBackground3.png"
         };
-
-        // Загрузка каждого изображения по указанным путям
         for (String path : imagePaths) {
-            try (InputStream is = getClass().getResourceAsStream(path)) {
-                if (is != null) {
-                    backgroundImages.add(new Image(is)); // Добавляем успешно загруженное изображение
-                }
-            } catch (IOException e) {
-                e.printStackTrace(); // Логируем ошибки загрузки
+            InputStream is = getClass().getResourceAsStream(path);
+            if (is != null) {
+                backgroundImages.add(new Image(is));
             }
         }
-
-        // Устанавливаем первое изображение как начальный фон
-        if (!backgroundImages.isEmpty()) {
-            backgroundImageView.setImage(backgroundImages.get(0));
-        }
+            backgroundImageView.setImage(backgroundImages.getFirst()); // первое изображение
     }
 
-    // ГОЛОВА СЛАЙДШОУ
-    private void startSlideShow() {
-        // Для слайд-шоу нужно минимум 2 изображения
+    private void startSlideShow() { // Запуск слайд-шоу
         if (backgroundImages.size() < 2) return;
 
-        // Создаем таймер с интервалом 5 секунд между сменами фона
         slideShowTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(5), event -> changeBackgroundWithAnimation())
         );
@@ -93,8 +70,7 @@ public class GameController {
         slideShowTimeline.play(); // Запуск таймера
     }
 
-    // ОСНОВНОЙ ПРИНЦИП СЛАЙДШОУ
-    private void changeBackgroundWithAnimation() {
+    private void changeBackgroundWithAnimation() { // метод, делающий смену картинок
         // Вычисляем индекс следующего изображения (с зацикливанием)
         int nextIndex = (currentBackgroundIndex + 1) % backgroundImages.size();
 
@@ -124,31 +100,27 @@ public class GameController {
             nextBackgroundImageView.setVisible(false); // Скрываем временное изображение
             currentBackgroundIndex = nextIndex; // Обновляем текущий индекс
         });
-
         parallelTransition.play(); // Запуск анимации
     }
 
-    // кнопка Играть
     @FXML
-    void onPlayBtnClick(ActionEvent event) {
-        play.setText("Играем..."); // Изменяем текст кнопки
+    void onPlayButtonClick(ActionEvent event) { // Нажатие на кнопку играть
+        playButton.setText("Играем..."); // Изменяем текст кнопки
     }
 
-
-    // Кнопка Настройки
     @FXML
-    void onOptionsBtnClick(ActionEvent event) {
+    void onOptionsButtonClick(ActionEvent event) {
         try {
             // Останавливаем слайд-шоу перед переходом
             if (slideShowTimeline != null) {
                 slideShowTimeline.stop();
             }
 
-            Stage currentStage = (Stage) options.getScene().getWindow();
+            Stage currentStage = (Stage) optionsButton.getScene().getWindow();
             WindowState.saveWindowState(currentStage); // Сохраняем параметры окна
 
             // Загружаем новую сцену
-            Parent root = FXMLLoader.load(getClass().getResource("options.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("options.fxml")));
             currentStage.setScene(new Scene(root, WindowState.getWidth(), WindowState.getHeight()));
 
             // Восстанавливаем параметры окна
@@ -158,70 +130,68 @@ public class GameController {
         }
     }
 
-    // Кнопка Выход
     @FXML
-    void onExitBtnClick(ActionEvent event) {
-        Platform.exit(); // Корректный выход из приложения
+    void onExitButtonClick(ActionEvent event) {
+        Platform.exit();
     }
 
     @FXML
     void onMouseEnteredPlay(javafx.scene.input.MouseEvent mouseEvent) {
-            Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/play_btn_selected.png"));
+            Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/play_btn_selected.png")));
             ImageView imageView = new ImageView(newImage);
-            imageView.setFitWidth(376); // Устанавливаем ширину
+            imageView.setFitWidth(376); // Устанавливаем ширину и высоту
             imageView.setFitHeight(110);
-            play.setGraphic(imageView);
+            playButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseExitedPlay(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/game_button.png"));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/game_button.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
         imageView.setFitHeight(110);
-        play.setGraphic(imageView);
+        playButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseEnteredOptions(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/options_btn_selected.png"));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/options_btn_selected.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
         imageView.setFitHeight(110);
-        options.setGraphic(imageView);
+        optionsButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseExitedOptions(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/options_button.png"));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/options_button.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
         imageView.setFitHeight(110);
-        options.setGraphic(imageView);
+        optionsButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseEnteredExit(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/exit_btn_selected.png"));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/exit_btn_selected.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
         imageView.setFitHeight(110);
-        exit.setGraphic(imageView);
+        exitButton.setGraphic(imageView);
     }
 
     @FXML
     void onMouseExitedExit(javafx.scene.input.MouseEvent mouseEvent) {
-        Image newImage = new Image(getClass().getResourceAsStream("/images/buttons/exit_button.png"));
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/exit_button.png")));
         ImageView imageView = new ImageView(newImage);
-        imageView.setFitWidth(376); // Устанавливаем ширину
+        imageView.setFitWidth(376); // Устанавливаем ширину и высоту
         imageView.setFitHeight(110);
-        exit.setGraphic(imageView);
+        exitButton.setGraphic(imageView);
     }
 }
 
 
 
-// СОХРАНЕНИЕ РАЗРЕШЕНИЕ ИЗОБРАЖЕНИЯ
 class WindowState {
     private static double width, height, x, y; // Параметры окна
     private static boolean maximized;          // Состояние максимизации

@@ -33,7 +33,5 @@ public class OptionsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }
