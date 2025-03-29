@@ -61,7 +61,8 @@ public class GameController {
         String[] imagePaths = {
                 "/images/background/MainMenuBackground1.png",
                 "/images/background/MainMenuBackground2.png",
-                "/images/background/MainMenuBackground3.png"
+                "/images/background/MainMenuBackground3.png",
+                "/images/background/MainMenuBackground4.png",
         };
         for (String path : imagePaths) {
             InputStream is = getClass().getResourceAsStream(path);
