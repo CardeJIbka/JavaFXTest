@@ -38,10 +38,8 @@ public class GameController {
     private Timeline backgroundTimeline;
     private List<Image> backgroundImages = new ArrayList<>(); // Список загруженных фоновых изображений
     private int currentBackgroundIndex = 0;  // Индекс текущего фонового изображения
-    private final AudioClip buttonSelected = new AudioClip(this.getClass().getResource("/sounds/button_sounds/buttonSelected.mp3").toExternalForm());
-    private final AudioClip buttonClicked = new AudioClip(this.getClass().getResource("/sounds/button_sounds/buttonClicked.mp3").toExternalForm());
-    private final AudioClip ambientMenu = new AudioClip(this.getClass().getResource("/sounds/background_ambient/ambientMenu.mp3").toExternalForm());
-
+    private final AudioClip buttonSelected = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/button_sounds/buttonSelected.mp3")).toExternalForm());
+    private final AudioClip buttonClicked = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/button_sounds/buttonClicked.mp3")).toExternalForm());
 
     @FXML
     public void initialize() {
@@ -53,8 +51,6 @@ public class GameController {
         startSlideShow();        // Запуск слайд-шоу
         buttonSelected.setVolume(0.1);
         buttonClicked.setVolume(0.2);
-        ambientMenu.setVolume(0.1);
-        ambientMenu.play();
     }
 
     private void loadBackgroundImages() {   // Загрузка фоновых изображений
@@ -83,17 +79,6 @@ public class GameController {
         slideShowTimeline.setCycleCount(Timeline.INDEFINITE); // Бесконечное повторение
         slideShowTimeline.play(); // Запуск таймера
 
-        backgroundTimeline = new Timeline( // счётчик чтобы музыка начиналась заного
-                new KeyFrame(Duration.seconds(1), actionEvent -> checkAmbientIsPlaying())
-        );
-        backgroundTimeline.setCycleCount(Timeline.INDEFINITE);
-        backgroundTimeline.play();
-    }
-
-    private void checkAmbientIsPlaying() {
-        if (!ambientMenu.isPlaying()) {
-            ambientMenu.play();
-        }
     }
 
     private void changeBackgroundWithAnimation() { // метод, делающий смену картинок
@@ -143,10 +128,6 @@ public class GameController {
             if (slideShowTimeline != null) {
                 slideShowTimeline.stop();
             }
-            if (ambientMenu != null) {
-                ambientMenu.stop();
-            }
-
             Stage currentStage = (Stage) optionsButton.getScene().getWindow();
             WindowState.saveWindowState(currentStage); // Сохраняем параметры окна
 
