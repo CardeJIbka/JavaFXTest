@@ -12,7 +12,7 @@ import java.io.IOException;
 public class OptionsController {
 
     @FXML
-    private Button backButton;  // Должен соответствовать fx:id в options.fxml
+    private Button backButton;
 
     @FXML
     private void onBackButtonClick() {

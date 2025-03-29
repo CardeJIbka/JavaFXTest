@@ -139,9 +139,12 @@ public class GameController {
     void onOptionsButtonClick(ActionEvent event) {
         buttonClicked.play();
         try {
-            // Останавливаем слайд-шоу перед переходом
+            // Останавливаем слайд-шоу и музыку перед переходом
             if (slideShowTimeline != null) {
                 slideShowTimeline.stop();
+            }
+            if (ambientMenu != null) {
+                ambientMenu.stop();
             }
 
             Stage currentStage = (Stage) optionsButton.getScene().getWindow();
