@@ -10,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import javafx.animation.PauseTransition;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -22,6 +24,7 @@ public class OptionsController {
     private Button backButton;
     private final AudioClip buttonSelected = new AudioClip(this.getClass().getResource("/sounds/button_sounds/buttonSelected.mp3").toExternalForm());
     private final AudioClip buttonClicked = new AudioClip(this.getClass().getResource("/sounds/button_sounds/buttonClicked.mp3").toExternalForm());
+    private boolean isSaveButtonClicked = false;
 
     @FXML
     public void initialize() {
@@ -68,9 +71,30 @@ public class OptionsController {
     }
 
     @FXML
-    void onSaveButtonClick(ActionEvent event) { // Нажатие на кнопку играть
-        saveButton.setText("Изменения успешно сохранены!"); // Изменяем текст кнопки
-        buttonClicked.play();
+    void onSaveButtonClick(ActionEvent event) {
+        if (!isSaveButtonClicked) {
+            isSaveButtonClicked = true;
+
+            Image clickedImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/saveButtonClick.png")));
+            ImageView clickedImageView = new ImageView(clickedImage);
+            clickedImageView.setFitWidth(535);
+            clickedImageView.setFitHeight(156);
+            saveButton.setGraphic(clickedImageView);
+            buttonClicked.play();
+
+            PauseTransition delay = new PauseTransition(Duration.seconds(3)); // кд 3 секунды перед тем, как фотка станет нормальной
+            delay.setOnFinished(e -> {
+                isSaveButtonClicked = false;
+
+                Image normalImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/saveButton.png")));
+                ImageView normalImageView = new ImageView(normalImage);
+                normalImageView.setFitWidth(535);
+                normalImageView.setFitHeight(156);
+                saveButton.setGraphic(normalImageView);
+                saveButton.setText("");
+            });
+            delay.play();
+        }
     }
 
     @FXML

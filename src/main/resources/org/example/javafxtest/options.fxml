@@ -19,8 +19,8 @@
             <Image url="@../../../images/other/options.png" />
         </ImageView>
 
-        <!-- Кнопка "Cохранить изменения" в левом нижнем углу -->
-        <Button fx:id="saveButton"  layoutX="198.0" layoutY="630.0" mnemonicParsing="false" onAction="#onSaveButtonClick" onMouseEntered="#onMouseEnteredSave" onMouseExited="#onMouseExitedSave" style="-fx-background-color: transparent; -fx-padding: 0;"  AnchorPane.bottomAnchor="256.0" AnchorPane.leftAnchor="86.0">
+        <!-- Кнопка "Cохранить изменения" в левом верхнем углу -->
+        <Button fx:id="saveButton"  layoutX="198.0" layoutY="630.0" mnemonicParsing="false" onAction="#onSaveButtonClick" onMouseEntered="#onMouseEnteredSave" onMouseExited="#onMouseExitedSave" style="-fx-background-color: transparent; -fx-padding: 0;"  AnchorPane.topAnchor="256.0" AnchorPane.leftAnchor="86.0">
             <graphic>
                 <ImageView fitHeight="156.0" fitWidth="535.0" preserveRatio="true">
                     <Image url="@../../../images/buttons/saveButton.png"/>
@@ -30,8 +30,8 @@
 
 
 
-        <!-- Кнопка "Назад" в левом нижнем углу -->
-        <Button fx:id="backButton"  layoutX="198.0" layoutY="630.0" mnemonicParsing="false" onAction="#onBackButtonClick" onMouseEntered="#onMouseEnteredOptions" onMouseExited="#onMouseExitedOptions" style="-fx-background-color: transparent; -fx-padding: 0;"  AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="86.0">
+        <!-- Кнопка "Назад" в левом верхнем углу -->
+        <Button fx:id="backButton"  layoutX="198.0" layoutY="630.0" mnemonicParsing="false" onAction="#onBackButtonClick" onMouseEntered="#onMouseEnteredOptions" onMouseExited="#onMouseExitedOptions" style="-fx-background-color: transparent; -fx-padding: 0;"  AnchorPane.topAnchor="70.0" AnchorPane.leftAnchor="86.0">
             <graphic>
                 <ImageView fitHeight="156.0" fitWidth="535.0" preserveRatio="true">
                     <Image url="@../../../images/buttons/backButton.png"/>
