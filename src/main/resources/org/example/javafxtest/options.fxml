@@ -14,17 +14,24 @@
         </ImageView>
 
 
-        <!-- Кнопка "Настройки" в правом верхнем углу -->
-        <Button fx:id="optionsButton" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="80.0">
+        <!-- Настройки справа сверху -->
+        <ImageView fx:id="optionsImageView" fitHeight="423.0" fitWidth="676.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="80.0">
+            <Image url="@../../../images/other/options.png" />
+        </ImageView>
+
+        <!-- Кнопка "Cохранить изменения" в левом нижнем углу -->
+        <Button fx:id="saveButton"  layoutX="198.0" layoutY="630.0" mnemonicParsing="false" onAction="#onSaveButtonClick" onMouseEntered="#onMouseEnteredSave" onMouseExited="#onMouseExitedSave" style="-fx-background-color: transparent; -fx-padding: 0;"  AnchorPane.bottomAnchor="256.0" AnchorPane.leftAnchor="86.0">
             <graphic>
                 <ImageView fitHeight="156.0" fitWidth="535.0" preserveRatio="true">
-                    <Image url="@../../../images/buttons/optionsButton.png"/>
+                    <Image url="@../../../images/buttons/saveButton.png"/>
                 </ImageView>
             </graphic>
         </Button>
 
+
+
         <!-- Кнопка "Назад" в левом нижнем углу -->
-        <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" style="-fx-background-color: transparent; -fx-padding: 0;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="86.0">
+        <Button fx:id="backButton"  layoutX="198.0" layoutY="630.0" mnemonicParsing="false" onAction="#onBackButtonClick" onMouseEntered="#onMouseEnteredOptions" onMouseExited="#onMouseExitedOptions" style="-fx-background-color: transparent; -fx-padding: 0;"  AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="86.0">
             <graphic>
                 <ImageView fitHeight="156.0" fitWidth="535.0" preserveRatio="true">
                     <Image url="@../../../images/buttons/backButton.png"/>
