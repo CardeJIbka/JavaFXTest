@@ -19,7 +19,7 @@ public class Game extends Application { // главный класс как я �
     @Override
     public void start(Stage stage) throws IOException { // метод, вызываемый при старте игры
         FXMLLoader fxmlLoader = new FXMLLoader(Game.class.getResource("main_menu.fxml")); // хз что, похоже на запуск первого окна при запуске игры
-        Scene scene = new Scene(fxmlLoader.load(), 1440, 840); //размер окна
+        Scene scene = new Scene(fxmlLoader.load(), 1920, 1080); //размер окна
         stage.setTitle("Tales of Elteria"); //название окна
         stage.setScene(scene); // установка сцены (fxml файл с дизайном и объектами)
         stage.setMaximized(true);

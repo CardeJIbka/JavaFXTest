@@ -1,21 +1,81 @@
 package org.example.javafxtest;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class OptionsController {
 
     @FXML
+    private Button saveButton;
+    @FXML
     private Button backButton;
+    private final AudioClip buttonSelected = new AudioClip(this.getClass().getResource("/sounds/button_sounds/buttonSelected.mp3").toExternalForm());
+    private final AudioClip buttonClicked = new AudioClip(this.getClass().getResource("/sounds/button_sounds/buttonClicked.mp3").toExternalForm());
+
+    @FXML
+    public void initialize() {
+        buttonSelected.setVolume(0.1);
+        buttonClicked.setVolume(0.2);
+    }
+
+    @FXML
+    void onMouseEnteredOptions(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/backButtonSelected.png")));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
+        backButton.setGraphic(imageView);
+        buttonSelected.play();
+    }
+
+    @FXML
+    void onMouseExitedOptions(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/backButton.png")));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
+        backButton.setGraphic(imageView);
+    }
+
+    @FXML
+    void onMouseEnteredSave(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/saveButtonSelected.png")));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
+        saveButton.setGraphic(imageView);
+        buttonSelected.play();
+    }
+
+    @FXML
+    void onMouseExitedSave(javafx.scene.input.MouseEvent mouseEvent) {
+        Image newImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/buttons/saveButton.png")));
+        ImageView imageView = new ImageView(newImage);
+        imageView.setFitWidth(535); // Устанавливаем ширину и высоту
+        imageView.setFitHeight(156);
+        saveButton.setGraphic(imageView);
+    }
+
+    @FXML
+    void onSaveButtonClick(ActionEvent event) { // Нажатие на кнопку играть
+        saveButton.setText("Изменения успешно сохранены!"); // Изменяем текст кнопки
+        buttonClicked.play();
+    }
 
     @FXML
     private void onBackButtonClick() {
+        buttonClicked.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("main_menu.fxml"));
             Parent root = loader.load();
@@ -34,4 +94,7 @@ public class OptionsController {
             e.printStackTrace();
         }
     }
+
+
+
 }
