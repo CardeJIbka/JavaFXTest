@@ -118,7 +118,4 @@ public class OptionsController {
             e.printStackTrace();
         }
     }
-
-
-
 }
