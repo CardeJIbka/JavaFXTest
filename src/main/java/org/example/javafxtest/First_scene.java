@@ -27,7 +27,6 @@ public class First_scene {
         hint.setVisible(false);
         mediaPlayer.setVolume(0.1);
         mediaPlayer.play();
-
         mediaPlayer.setOnEndOfMedia(this::endOfCutScene); // вызов метода endOfCutScene через лямбду когда конец
         mediaPlayer.setOnStopped(this::endOfCutScene); // вызов метода endOfCutScene через лямбду когда стоп
         delay.play();
@@ -38,7 +37,6 @@ public class First_scene {
     public void endOfCutScene() {
         startText.setVisible(true);
         startText.setOpacity(0);// Показываем
-
         // Анимация появления текста (fade in)
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), startText);
         fadeTransition.setFromValue(0); // Начальная непрозрачность
@@ -56,7 +54,6 @@ public class First_scene {
         if (!startText.isVisible()) {
             text.setVisible(true);
             text.setOpacity(0);// Показываем
-
             // Анимация появления текста (fade in)
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), text);
             fadeTransition.setFromValue(0); // Начальная непрозрачность
