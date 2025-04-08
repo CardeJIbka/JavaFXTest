@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.Media?>
+<?import javafx.scene.media.MediaPlayer?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafxtest.First_scene">
+   <children>
+      <MediaView fx:id="cutScene1" fitHeight="0.0" fitWidth="0.0" layoutX="-691.0" layoutY="-359.0" onMouseClicked="#skipCutScene" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <mediaPlayer>
+            <MediaPlayer>
+               <media>
+                  <Media>
+                     <source>
+                        <URL value="@../../../videos/cut_scene1.mp4" />
+                     </source>
+                  </Media>
+               </media>
+            </MediaPlayer>
+         </mediaPlayer>
+      </MediaView>
+      <Text fx:id="startText" fill="WHITE" layoutX="570.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Происходит игра..." wrappingWidth="927.09375">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Text>
+      <Text fx:id="hint" fill="WHITE" layoutX="1133.0" layoutY="976.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Нажмите ЛКМ, чтобы пропустить" wrappingWidth="757.205078125">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

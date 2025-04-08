@@ -40,6 +40,8 @@ public class GameController {
     private int currentBackgroundIndex = 0;  // Индекс текущего фонового изображения
     private final AudioClip buttonSelected = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/button_sounds/buttonSelected.mp3")).toExternalForm());
     private final AudioClip buttonClicked = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/button_sounds/buttonClicked.mp3")).toExternalForm());
+    private final AudioClip ambientMenu = new AudioClip(Objects.requireNonNull(this.getClass().getResource("/sounds/background_ambient/ambientMenu.mp3")).toExternalForm());
+    public static boolean ambientIsPlaying = false;
 
     @FXML
     public void initialize() {
@@ -51,6 +53,8 @@ public class GameController {
         startSlideShow();        // Запуск слайд-шоу
         buttonSelected.setVolume(0.1);
         buttonClicked.setVolume(0.2);
+        ambientMenu.setVolume(0.1);
+        checkAmbientIsPlaying(ambientMenu);
     }
 
     private void loadBackgroundImages() {   // Загрузка фоновых изображений
@@ -79,6 +83,18 @@ public class GameController {
         slideShowTimeline.setCycleCount(Timeline.INDEFINITE); // Бесконечное повторение
         slideShowTimeline.play(); // Запуск таймера
 
+        backgroundTimeline = new Timeline( // счётчик чтобы музыка начиналась заного
+                new KeyFrame(Duration.seconds(1), actionEvent -> checkAmbientIsPlaying(ambientMenu))
+        );
+        backgroundTimeline.setCycleCount(Timeline.INDEFINITE);
+        backgroundTimeline.play();
+    }
+
+    public void checkAmbientIsPlaying(AudioClip clip) {
+        if (!ambientIsPlaying) {
+            clip.play();
+            ambientIsPlaying = true;
+        }
     }
 
     private void changeBackgroundWithAnimation() { // метод, делающий смену картинок
@@ -116,13 +132,33 @@ public class GameController {
 
     @FXML
     void onPlayButtonClick(ActionEvent event) { // Нажатие на кнопку играть
-        playButton.setText("Играем..."); // Изменяем текст кнопки
         buttonClicked.play();
+        ambientMenu.stop();
+        ambientIsPlaying = false;
+        try {
+            // Останавливаем слайд-шоу и музыку перед переходом
+            if (slideShowTimeline != null) {
+                slideShowTimeline.stop();
+                backgroundTimeline.stop();
+            }
+            Stage currentStage = (Stage) optionsButton.getScene().getWindow();
+            WindowState.saveWindowState(currentStage); // Сохраняем параметры окна
+
+            // Загружаем новую сцену
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("first_scene.fxml")));
+            currentStage.setScene(new Scene(root, WindowState.getWidth(), WindowState.getHeight()));
+
+            // Восстанавливаем параметры окна
+            WindowState.restoreWindowState(currentStage);
+        } catch (IOException e) {
+            e.printStackTrace(); // Логируем ошибки загрузки
+        }
     }
 
     @FXML
     void onOptionsButtonClick(ActionEvent event) {
         buttonClicked.play();
+        backgroundTimeline.stop();
         try {
             // Останавливаем слайд-шоу и музыку перед переходом
             if (slideShowTimeline != null) {
